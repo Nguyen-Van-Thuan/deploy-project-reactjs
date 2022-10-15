@@ -1,0 +1,38 @@
+{
+    "posts": [
+        {
+            "id": 1,
+            "title": "json-server",
+            "author": "typicode"
+        },
+        {
+            "id": 2,
+            "title": "react",
+            "author": "frontend 24"
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    },
+    "product": [
+        {
+            "id": 1,
+            "title": "áo",
+            "price": "200000",
+            "description": "Sắp đông rồi mua quần áo đi"
+        },
+        {
+            "id": 2,
+            "title": "quần",
+            "price": "500000",
+            "description": "siêu dày"
+        }
+    ]
+}
