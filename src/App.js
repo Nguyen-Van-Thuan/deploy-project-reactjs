@@ -3,6 +3,7 @@ import Browse from "./pages/Browse";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
+import Mounted from "./pages/Mounted";
 import Nopage from "./pages/Nopage";
 import Product from "./pages/product";
 import Profile from "./pages/Profile";
@@ -19,6 +20,7 @@ function App() {
           <Route path="streams" element={<Streams />} />
           <Route path="profile" element={<Profile />} />
           <Route path="product" element={<Product />} />
+          <Route path="mounted" element={<Mounted/>} />
           <Route path="*" element={<Nopage />} />
         </Route>
       </Routes>

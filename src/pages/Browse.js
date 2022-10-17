@@ -1,6 +1,47 @@
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const Browse = () => {
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    // margin: 10,
+    centerPadding: 10,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+          margin: 10,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -14,7 +55,8 @@ const Browse = () => {
                       <em>Featured</em> Games
                     </h4>
                   </div>
-                  <div className="owl-features owl-carousel">
+
+                  <Slider {...settings}>
                     <div className="item">
                       <div className="thumb">
                         <img src="assets/images/featured-01.jpg" alt="" />
@@ -29,10 +71,10 @@ const Browse = () => {
                       </h4>
                       <ul>
                         <li>
-                          <span className="fa fa-star"></span> 4.8
+                          <i className="fa fa-star"></i> 4.8
                         </li>
                         <li>
-                          <span className="fa fa-download"></span> 2.3M
+                          <i className="fa fa-download"></i> 2.3M
                         </li>
                       </ul>
                     </div>
@@ -50,10 +92,10 @@ const Browse = () => {
                       </h4>
                       <ul>
                         <li>
-                          <span className="fa fa-star"></span> 4.8
+                          <i className="fa fa-star"></i> 4.8
                         </li>
                         <li>
-                          <span className="fa fa-download"></span> 2.3M
+                          <i className="fa fa-download"></i> 2.3M
                         </li>
                       </ul>
                     </div>
@@ -71,10 +113,10 @@ const Browse = () => {
                       </h4>
                       <ul>
                         <li>
-                          <span className="fa fa-star"></span> 4.8
+                          <i className="fa fa-star"></i> 4.8
                         </li>
                         <li>
-                          <span className="fa fa-download"></span> 2.3M
+                          <i className="fa fa-download"></i> 2.3M
                         </li>
                       </ul>
                     </div>
@@ -92,10 +134,10 @@ const Browse = () => {
                       </h4>
                       <ul>
                         <li>
-                          <span className="fa fa-star"></span> 4.8
+                          <i className="fa fa-star"></i> 4.8
                         </li>
                         <li>
-                          <span className="fa fa-download"></span> 2.3M
+                          <i className="fa fa-download"></i> 2.3M
                         </li>
                       </ul>
                     </div>
@@ -113,10 +155,10 @@ const Browse = () => {
                       </h4>
                       <ul>
                         <li>
-                          <span className="fa fa-star"></span> 4.8
+                          <i className="fa fa-star"></i> 4.8
                         </li>
                         <li>
-                          <span className="fa fa-download"></span> 2.3M
+                          <i className="fa fa-download"></i> 2.3M
                         </li>
                       </ul>
                     </div>
@@ -134,14 +176,14 @@ const Browse = () => {
                       </h4>
                       <ul>
                         <li>
-                          <span className="fa fa-star"></span> 4.8
+                          <i className="fa fa-star"></i> 4.8
                         </li>
                         <li>
-                          <span className="fa fa-download"></span> 2.3M
+                          <i className="fa fa-download"></i> 2.3M
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </Slider>
                 </div>
               </div>
               <div className="col-lg-4">
@@ -161,10 +203,17 @@ const Browse = () => {
                       <h4>Fortnite</h4>
                       <h6>Sandbox</h6>
                       <span>
-                        <span className="fa fa-star" style={{color: "yellow"}}></span> 4.9
+                        <span
+                          className="fa fa-star"
+                          style={{ color: "yellow" }}
+                        ></span>{" "}
+                        4.9
                       </span>
                       <span>
-                        <span className="fa fa-download" style={{color: "#ec6090"}}></span>{" "}
+                        <span
+                          className="fa fa-download"
+                          style={{ color: "#ec6090" }}
+                        ></span>{" "}
                         2.2M
                       </span>
                       <div className="download">
@@ -182,10 +231,17 @@ const Browse = () => {
                       <h4>CS-GO</h4>
                       <h6>Legendary</h6>
                       <span>
-                        <span className="fa fa-star" style={{color: "yellow"}}></span> 4.9
+                        <span
+                          className="fa fa-star"
+                          style={{ color: "yellow" }}
+                        ></span>{" "}
+                        4.9
                       </span>
                       <span>
-                        <span className="fa fa-download" style={{color: "#ec6090"}}></span>{" "}
+                        <span
+                          className="fa fa-download"
+                          style={{ color: "#ec6090" }}
+                        ></span>{" "}
                         2.2M
                       </span>
                       <div className="download">
@@ -203,10 +259,17 @@ const Browse = () => {
                       <h4>PugG</h4>
                       <h6>Battle Royale</h6>
                       <span>
-                        <span className="fa fa-star" style={{color: "yellow"}}></span> 4.9
+                        <span
+                          className="fa fa-star"
+                          style={{ color: "yellow" }}
+                        ></span>{" "}
+                        4.9
                       </span>
                       <span>
-                        <span className="fa fa-download" style={{color: "#ec6090"}}></span>{" "}
+                        <span
+                          className="fa fa-download"
+                          style={{ color: "#ec6090" }}
+                        ></span>{" "}
                         2.2M
                       </span>
                       <div className="download">
@@ -236,7 +299,7 @@ const Browse = () => {
                         <img
                           src="assets/images/service-01.jpg"
                           alt=""
-                          style={{maxWidth: "60px", borderRadius: "50%"}}
+                          style={{ maxWidth: "60px", borderRadius: "50%" }}
                         />
                       </div>
                       <h4>Go To Your Profile</h4>
@@ -252,7 +315,7 @@ const Browse = () => {
                         <img
                           src="assets/images/service-02.jpg"
                           alt=""
-                          style={{maxWidth: "60px", borderRadius: "50%"}}
+                          style={{ maxWidth: "60px", borderRadius: "50%" }}
                         />
                       </div>
                       <h4>Live Stream Button</h4>
@@ -271,7 +334,7 @@ const Browse = () => {
                         <img
                           src="assets/images/service-03.jpg"
                           alt=""
-                          style={{maxWith: "60px", borderRadius: "50%"}}
+                          style={{ maxWith: "60px", borderRadius: "50%" }}
                         />
                       </div>
                       <h4>You Are Live</h4>
@@ -328,7 +391,11 @@ const Browse = () => {
                         <img
                           src="assets/images/avatar-01.jpg"
                           alt=""
-                          style={{maxWidth: "46px", borderRadius: "50%", float: "left"}}
+                          style={{
+                            maxWidth: "46px",
+                            borderRadius: "50%",
+                            float: "left",
+                          }}
                         />
                       </div>
                       <span>
@@ -367,7 +434,11 @@ const Browse = () => {
                         <img
                           src="assets/images/avatar-02.jpg"
                           alt=""
-                          style={{maxWidth: "46px", borderRadius: "50%", float: "left"}}
+                          style={{
+                            maxWidth: "46px",
+                            borderRadius: "50%",
+                            float: "left",
+                          }}
                         />
                       </div>
                       <span>
@@ -406,7 +477,11 @@ const Browse = () => {
                         <img
                           src="assets/images/avatar-03.jpg"
                           alt=""
-                          style={{maxWidth: "46px", borderRadius: "50%", float: "left"}}
+                          style={{
+                            maxWidth: "46px",
+                            borderRadius: "50%",
+                            float: "left",
+                          }}
                         />
                       </div>
                       <span>
@@ -445,7 +520,11 @@ const Browse = () => {
                         <img
                           src="assets/images/avatar-04.jpg"
                           alt=""
-                          style={{maxWith: "46px", borderRadius: "50%", float: "left"}}
+                          style={{
+                            maxWith: "46px",
+                            borderRadius: "50%",
+                            float: "left",
+                          }}
                         />
                       </div>
                       <span>
@@ -466,6 +545,9 @@ const Browse = () => {
         </div>
       </div>
     </div>
+
+
+    // Mounted and UnMounted
   );
 };
 
