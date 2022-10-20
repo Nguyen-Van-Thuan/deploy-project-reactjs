@@ -100,8 +100,3 @@ const Product = () => {
 };
 
 export default Product;
-
-//Tạo bài lap, hướng dẫn
-//1. createContext
-//2. Provider
-//3. Consumer
