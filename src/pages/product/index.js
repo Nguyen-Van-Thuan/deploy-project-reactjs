@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import Pagination from "../../components/Pagination";
+import Category from "./Category";
 import "./product.css";
 
 const Product = () => {
@@ -10,9 +11,10 @@ const Product = () => {
   const [listProduct, setListProduct] = useState()
   const [count, setCount] = useState()
   const [pageParams, setPageParams] = useState(0)
+  const [category, setCategory] = useState()
 
   const limit = 12
-  
+
   // Call API
   useEffect(() => {
     setLoading(true)
@@ -22,7 +24,8 @@ const Product = () => {
         url: 'http://localhost:3000/product',
         params: {
           _page: pageParams,
-          _limit: limit
+          _limit: limit,
+          category: category
         }
       }).then(function (response) {
         setListProduct(response.data);
@@ -32,7 +35,7 @@ const Product = () => {
     } catch (error) {
       console.log(error)
     }
-  }, [pageParams])
+  }, [pageParams, category])
 
   return (
     <div className="container">
@@ -45,13 +48,14 @@ const Product = () => {
                   <div className="heading-section">
                     <h4><em>Most Popular</em> Right Now</h4>
                   </div>
+                  <Category setCategory={setCategory} />
                   <div className="row">
-                    {!isLoading && listProduct.map(item => {
+                    {(!isLoading && listProduct) && listProduct.map((item, index) => {
                       return (
-                        <div className="col-12 col-sm-6 col-lg-4" key={item.id}>
+                        <div className="col-12 col-sm-6 col-lg-4" key={index}>
                           <div className="item">
                             <img src={item.image} alt="" style={{ height: "350px" }} />
-                            <h4>{item.title}<br /><span>Price: {item.price} $</span></h4>
+                            <h4>{item.category}<br /><span>Price: {item.price} $</span></h4>
                             <div>
                               <span><i className="fa fa-star"></i> {item.rating.rate}</span>
                               <span><i className="fa fa-download"></i> {item.rating.count}</span>
