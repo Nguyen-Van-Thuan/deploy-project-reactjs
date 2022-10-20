@@ -1,85 +1,107 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
-import "./product.css"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
+import Pagination from "../../components/Pagination";
 
 const Product = () => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    // margin: 10,
-    centerPadding: 10,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-          margin: 10,
+  const [isLoading, setLoading] = useState(false);
+  const [listData, setListData] = useState(); //Danh sách sản phẩm
+  const [sumProduct, setSumProduct] = useState(); //Tổng số sản phẩm trong API
+  const [page, setPages] = useState(1);
+
+  const limit = 8;
+  useEffect(() => {
+    setLoading(true);
+    try {
+      axios({
+        method: "get",
+        url: "http://localhost:3000/product",
+        params: {
+          _page: page,
+          _limit: limit,
         },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+      }).then(function (response) {
+        setListData(response.data);
+        setSumProduct(response.headers.get("X-Total-Count"));
+        setLoading(false);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, [page]);
+
+  // console.log(listData);
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-lg-12">
           <div className="page-content">
-            <Slider {...settings}>
-              <div>
-                <img src="http://placekitten.com/g/400/200" />
+            <div className="most-popular">
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="heading-section">
+                    <h4>
+                      <em>Most Popular</em> Right Now
+                    </h4>
+                  </div>
+                  <div className="row">
+                    {(!isLoading && listData) &&
+                      listData.map((item, index) => {
+                        // console.log(item, "item");
+                        return (
+                          <div className="col-lg-3 col-sm-6" key={index}>
+                            <div className="item">
+                              <img
+                                src={item.image}
+                                alt=""
+                                style={{ height: "250px" }}
+                              />
+                              <h4>
+                                {item.category}
+                                <br />
+                                <span>Price: {item.price} $</span>
+                              </h4>
+                              <ul>
+                                <li>
+                                  <i className="fa fa-star"></i>{" "}
+                                  {item.rating.rate}
+                                </li>
+                                <li>
+                                  <i className="fa fa-download"></i>{" "}
+                                  {item.rating.count}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    {isLoading && (
+                      <Spinner animation="border" variant="success" />
+                    )}
+                    <div className="col-lg-12">
+                      <div className="main-button">
+                        <Pagination
+                          sumProduct={sumProduct}
+                          limit={limit}
+                          setPages={setPages}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <img src="http://placekitten.com/g/400/200" />
-              </div>
-              <div>
-                <img src="http://placekitten.com/g/400/200" />
-              </div>
-              <div>
-                <img src="http://placekitten.com/g/400/200" />
-              </div>
-              <div>
-                <img src="http://placekitten.com/g/400/200" />
-              </div>
-              <div>
-                <img src="http://placekitten.com/g/400/200" />
-              </div>
-              <div>
-                <img src="http://placekitten.com/g/400/200" />
-              </div>
-            </Slider>
+            </div>
           </div>
-          <a href="http://localhost:3000/mounted">Mounted</a>
         </div>
       </div>
     </div>
   );
 };
 
-
-
-
 export default Product;
+
+//Tạo bài lap, hướng dẫn
+//1. createContext
+//2. Provider
+//3. Consumer
