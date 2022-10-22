@@ -6,13 +6,15 @@ import Category from "../Category";
 import './product.css'
 
 const Product = () => {
+  const limit = 8;
   const [isLoading, setLoading] = useState(false);
   const [listData, setListData] = useState(); //Danh sách sản phẩm
   const [sumProduct, setSumProduct] = useState(); //Tổng số sản phẩm trong API
   const [page, setPages] = useState(1);
   const [category, setCategory] = useState()
+  const [selectPrice, setSelectPrice] = useState()
+  const [order, setOrder] = useState()
 
-  const limit = 8;
   useEffect(() => {
     setLoading(true);
     try {
@@ -22,7 +24,9 @@ const Product = () => {
         params: {
           _page: page,
           _limit: limit,
-          category: category //category
+          category: category, //category
+          _sort: selectPrice,
+          _order: order
         },
       }).then(function (response) {
         setListData(response.data);
@@ -32,7 +36,7 @@ const Product = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [page, category]);
+  }, [page, category, selectPrice, order]);
 
   // console.log(listData);
 
@@ -50,7 +54,7 @@ const Product = () => {
                     </h4>
                   </div>
                   <div className="category-filter">
-                    <Category setCategory={setCategory}/>
+                    <Category setCategory={setCategory} setSelectPrice={setSelectPrice} setOrder={setOrder}/>
                   </div>
                   <div className="row">
                     {!isLoading &&

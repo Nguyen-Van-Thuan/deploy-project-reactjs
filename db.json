@@ -458,9 +458,15 @@
         }
     ],
     "category": [
+        "all product",
         "electronics",
         "jewelery",
         "men's clothing",
         "women's clothing"
-      ]
+      ],
+    "sort-select": [
+        "Phân loại",
+        "Giá từ thấp tới cao",
+        "Giá từ cao xuống thấp"
+    ]
 }

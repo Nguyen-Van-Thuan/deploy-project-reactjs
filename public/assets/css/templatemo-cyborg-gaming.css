@@ -1733,3 +1733,30 @@ body {
     width: 16%;
   }
 }
+/* item search.Start */
+#search {
+  position: relative;
+}
+#search .wrap-search {
+  position: absolute;
+  background: #27292a;
+  width: 100%;
+  border-radius: 15px;
+  top: 110%
+}
+#search .wrap-search li a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+#search .wrap-search li a img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+#search .wrap-search li a h3 {
+  color: #fff;
+  font-size: 16px;
+}

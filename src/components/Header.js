@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 const Header = () => {
   return (
@@ -10,17 +11,11 @@ const Header = () => {
               <Link to="/" className="logo">
                 <img src="assets/images/logo.png" alt="" />
               </Link>
+
               <div className="search-input">
-                <form id="search" action="#">
-                  <input
-                    type="text"
-                    placeholder="Type Something"
-                    id="searchText"
-                    name="searchKeyword"
-                  />
-                  <i className="fa fa-search"></i>
-                </form>
+                <Search />
               </div>
+
               <ul className="nav">
                 <li>
                   <Link to="/" className="active">
