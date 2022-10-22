@@ -2,12 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import Pagination from "../../components/Pagination";
+import Category from "../Category";
+import './product.css'
 
 const Product = () => {
   const [isLoading, setLoading] = useState(false);
   const [listData, setListData] = useState(); //Danh sách sản phẩm
   const [sumProduct, setSumProduct] = useState(); //Tổng số sản phẩm trong API
   const [page, setPages] = useState(1);
+  const [category, setCategory] = useState()
 
   const limit = 8;
   useEffect(() => {
@@ -19,6 +22,7 @@ const Product = () => {
         params: {
           _page: page,
           _limit: limit,
+          category: category //category
         },
       }).then(function (response) {
         setListData(response.data);
@@ -28,7 +32,7 @@ const Product = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [page]);
+  }, [page, category]);
 
   // console.log(listData);
 
@@ -45,8 +49,12 @@ const Product = () => {
                       <em>Most Popular</em> Right Now
                     </h4>
                   </div>
+                  <div className="category-filter">
+                    <Category setCategory={setCategory}/>
+                  </div>
                   <div className="row">
-                    {(!isLoading && listData) &&
+                    {!isLoading &&
+                      listData &&
                       listData.map((item, index) => {
                         // console.log(item, "item");
                         return (

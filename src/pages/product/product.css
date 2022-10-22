@@ -1,3 +1,11 @@
-:local(body) {
-    background: violet;
+.category-filter ul {
+    display: flex;
+    margin: 15px 0;
+}
+.category-filter ul li {
+    margin-right: 15px;
+}
+.category-filter ul li span {
+    color: #fff;
+    cursor: pointer;
 }
